@@ -1,11 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TodoList Js</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TodoList Js</title>
+    <link rel="stylesheet" href="./css/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="container-main">
+      <div class="container">
+        <!--------------------------------------- STATUS & filter & sort -->
+        <div class="container__status">
+          <div class="status__details">
+            <span class="status__text">Todo Done</span>
+            <span class="status__description">Keep it up!</span>
+            <span class="status__complete-progress-Bar complete">
+              <span class="status__complete-progress complete"></span>
+            </span>
+          </div>
+          <span class="status__num">1 / 3</span>
+        </div>
+
+        <div class="container__filter">
+          <ul class="filter__list">
+            <li class="list__item all">All</li>
+            <li class="list__item complete">Completed</li>
+            <li class="list__item unCompleted">unCompleted</li>
+          </ul>
+        </div>
+
+         <div class="container__sort">
+          <ul class="sort__list">
+            <li class="list__item  ascendings">Ascending</li>
+            <li class="list__item descendings">Descending</li>
+          </ul>
+        </div>
+        <!-- END STATUS--------------------------------- -->
+
+        <!------------------------------------- ADD ITEM -->
+        <div class="container__addItem">
+          <form action="#" class="todo-form">
+            <input
+              type="text"
+              class="addItem__input"
+              name="addItem"
+              placeholder="write your task..."
+              autofocus
+            />
+            <button class="addItem__btn" type="submit"
+              ><i class="fa-solid fa-circle-plus"></i
+            ></button>
+          </form>
+        </div>
+        <!-- END ADD ITEM------------------------------- -->
+
+        <!---------------------------------------- INPUT -->
+       
+          <ul class="container__task-list">
+             <!-- <li class="container__input">
+
+          <div class="input__action">
+
+            <div class="input__checkbox">
+              <form action="#">
+                <input type="checkbox" />
+              </form>
+                  
+              <div class="input__text">
+                <p class="todo__title">Lorem, ipsum.</p>
+                <span class="input-createAt">18/3/1404</span>
+              </div>
+            </div>
+
+            <div class="input__trashEdit">
+              <i class="fa-solid fa-pen-to-square edit"></i>
+              <i class="fa-solid fa-trash trash"></i>
+            </div>
+          </div>
+        </li> -->
+          </ul>
+        <!-- END INPUT---------------------------------- -->
+      </div>
+    </div>
+
+    <script src="./js/app.js"></script>
+  </body>
 </html>
