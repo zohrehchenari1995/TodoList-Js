@@ -28,20 +28,29 @@
           <span class="status__num">1 / 3</span>
         </div>
 
-        <div class="container__filter">
-          <ul class="filter__list">
-            <li class="list__item all">All</li>
-            <li class="list__item complete">Completed</li>
-            <li class="list__item unCompleted">unCompleted</li>
-          </ul>
+        <div class="container__sortFilter">
+          <div class="container__filter">
+            <select name="" id="" class="select__filter">
+              <option class="selectes" selected>Filter</option>
+              <option value="all">All</option>
+              <option value="completed">Complete</option>
+              <option value="uncompleted">Uncomplete</option>
+            </select>
+          </div>
+
+          <div class="container__sort">
+            <select name="" id="" class="select__sort">
+              <option class="selectes" selected> Sort</option>
+              <option value="ascendingDate">Ascending Date</option>
+              <option value="descendingDate">Decending Date</option>
+              <option value="ascendingTitle">Ascending title</option>
+              <option value="descendingTitle">Descending title</option>
+            
+
+            </select>
+          </div>
         </div>
 
-         <div class="container__sort">
-          <ul class="sort__list">
-            <li class="list__item  ascendings">Ascending</li>
-            <li class="list__item descendings">Descending</li>
-          </ul>
-        </div>
         <!-- END STATUS--------------------------------- -->
 
         <!------------------------------------- ADD ITEM -->
@@ -54,17 +63,17 @@
               placeholder="write your task..."
               autofocus
             />
-            <button class="addItem__btn" type="submit"
-              ><i class="fa-solid fa-circle-plus"></i
-            ></button>
+            <button class="addItem__btn" type="submit">
+              <i class="fa-solid fa-circle-plus"></i>
+            </button>
           </form>
         </div>
         <!-- END ADD ITEM------------------------------- -->
 
         <!---------------------------------------- INPUT -->
-       
-          <ul class="container__task-list">
-             <!-- <li class="container__input">
+
+        <ul class="container__task-list">
+          <!-- <li class="container__input">
 
           <div class="input__action">
 
@@ -80,16 +89,23 @@
             </div>
 
             <div class="input__trashEdit">
-              <i class="fa-solid fa-pen-to-square edit"></i>
-              <i class="fa-solid fa-trash trash"></i>
+             <button class="todo__edit" data-todo-id=${todo-id}> <i class="fa-solid fa-pen-to-square"></i></button>
+             <button class="todo__remove" data-todo-id=${todo.id}> <i class="fa-solid fa-trash"></i></button>
             </div>
           </div>
         </li> -->
-          </ul>
+        </ul>
         <!-- END INPUT---------------------------------- -->
       </div>
     </div>
 
+
     <script src="./js/app.js"></script>
   </body>
 </html>
+
+
+
+
+
+

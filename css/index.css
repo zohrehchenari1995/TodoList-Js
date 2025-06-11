@@ -102,71 +102,28 @@ body {
 }
 
 /* filter(all - completed - uncompleted) */
-.container__filter {
-  border: 2px solid var(--purpel);
-  border-radius: var(--border-radius-3xl);
+.container__sortFilter {
   width: calc(100vw - 5rem);
   max-width: 500px;
-}
-.container__filter .filter__list {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  height: 80px;
-  padding: 0 2rem;
-  font-size: 2rem;
-  letter-spacing: 0.1rem;
+  padding: 0.5rem;
+  /* margin-bottom: 5rem; */
+}
+.container__sortFilter select {
+  height: 50px;
+  width: 100px;
+  /* max-width: 100%; */
+  background-color: var(--color-secondary-background);
+  border-radius: var(--border-radius-2xl);
+  font-size: 1.2rem;
   font-weight: bold;
-  cursor: pointer;
-}
-.filter__list .all {
-  color: var(--purpel);
-}
-.filter__list .all:hover {
-  color: var(--color-text);
-}
-.filter__list .complete {
   color: var(--teal);
-}
-.filter__list .complete:hover {
-  color: var(--color-text);
-}
-.filter__list .unCompleted {
-  color: var(--color-trash);
-}
-.filter__list .unCompleted:hover {
-  color: var(--color-text);
+  padding: 0.5rem 1.5rem;
+  border: 0;
+  outline: 0;
 }
 
-.container__sort {
-  border: 2px solid var(--purpel);
-  border-radius: var(--border-radius-3xl);
-  width: calc(100vw - 5rem);
-  max-width: 500px;
-}
-.container__sort .sort__list {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 80px;
-  padding: 0 2rem;
-  font-size: 2rem;
-  letter-spacing: 0.1rem;
-  font-weight: bold;
-  cursor: pointer;
-}
-.sort__list .list__item.ascendings {
-  color: var(--purpel);
-}
-.sort__list .list__item.ascendings:hover {
-  color: var(--color-text);
-}
-.sort__list .list__item.descendings {
-  color: var(--color-trash);
-}
-.sort__list .list__item.descendings:hover {
-  color: var(--color-text);
-}
 /* end status style------------------------------------------------------ */
 
 /* ------------------------------------------------------------- add item */
@@ -230,7 +187,7 @@ body {
 }
 .input__checkbox {
   display: flex;
-  /* justify-content: space-around; */
+ 
 }
 .input__checkbox input[type="checkbox"] {
   width: 20px;
@@ -248,20 +205,26 @@ body {
   font-weight: bold;
   letter-spacing: 0.1rem;
 }
-.input__checkbox .input__text .todo__title{
+.input__checkbox .input__text .todo__title {
   margin-right: 1.5rem;
-  
 }
-
 
 .input__trashEdit {
-  font-size: 24px;
+  cursor: pointer;
 }
-.input__trashEdit .trash {
+.input__trashEdit button {
+  border: none;
+  box-shadow: none;
+  background-color: transparent !important;
+  font-size: 25px;
+
+}
+
+.input__trashEdit .todo__remove {
   color: var(--color-trash);
   margin-left: 1rem;
 }
-.input__trashEdit .edit {
+.input__trashEdit .todo__edit {
   color: var(--purpel);
 }
 
@@ -278,5 +241,48 @@ body {
   .container__sort .sort__list {
     font-size: 2.5rem;
   }
- 
+  .container__sortFilter select {
+    width: 200px;
+  }
+  .container__sortFilter select {
+    font-size: 1.8rem;
+    letter-spacing: 0.1rem;
+  }
 }
+
+button > i {
+  pointer-events: none;
+}
+.completed{
+  text-decoration: line-through;
+  opacity: 0.8;
+  color: var(--teal);
+}
+.completeCheckBox{
+  appearance: none;
+  background-color: var(--teal);
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
