@@ -14,8 +14,17 @@ todoForm.addEventListener("submit", addTodoTask);
 selectFilter.addEventListener("change", filterTodos);
 progress.addEventListener("change", completeTodo);
 
+selectFilter.addEventListener("change", (e) => {
+  currentFilter = e.target.value;  // مقدار فیلتر را ذخیره کن
+  filterTodos(e);                  // فیلتر کردن تودوها
+  updateProgressAndCircle();       // به‌روزرسانی نوار پیشرفت و عدد
+});
+
+
 //-----------------------------------------------------------FUNCTION:
 let todos = [];
+let currentFilter = "all"; // مقدار پیش‌فرض
+
 
 //add new todo:
 function addTodoTask(e) {
@@ -116,6 +125,8 @@ function filterTodos(e) {
     default:
       createTodo(todos);
   }
+  updateProgressAndCircle();
+ 
 }
 
 //delete:
@@ -150,8 +161,13 @@ function updateProgressAndCircle() {
   if (totalTodo === 0) {// اگر هیج تودویی اضافه نشده به لیست
     progress.style.width = "0%"; // عرض نوار پیشرفت بشه صفر
     containerCircle.textContent = "0 / 0";
+    return;
   } 
-  else {
+  if (currentFilter === "uncompleted"){
+    progress.style.width = "0%";
+    containerCircle.textContent = `0 / ${totalTodo}`;
+  }
+else {
     const step = 100 / totalTodo; // هر تودو یک گام از نوار پیشرفت بشه
     progress.style.width = `${step * completeTodos}%`; // اما اگر تودویی اضافه شده باشه عرض نوار پیشرفت بشه هر گاهی که داریم ضربدر موارد کامل شده
     containerCircle.textContent = `${completeTodos}  /  ${totalTodo}`;
