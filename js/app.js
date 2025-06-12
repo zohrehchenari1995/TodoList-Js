@@ -148,9 +148,18 @@ function completeTodo(e) {
   findTodo.isCompleted = !findTodo.isCompleted;
   createTodo(todos);
    updateProgressAndCircle();
+    createConfetti();
 }
 
-//sort
+//sort:
+
+
+
+
+//edit:
+
+
+
 
 //update status(progressBar):
 //تابع به روز رسانی
@@ -163,11 +172,11 @@ function updateProgressAndCircle() {
     containerCircle.textContent = "0 / 0";
     return;
   } 
-  if (currentFilter === "uncompleted"){
+  else if (currentFilter === "uncompleted"){
     progress.style.width = "0%";
     containerCircle.textContent = `0 / ${totalTodo}`;
   }
-else {
+  else {
     const step = 100 / totalTodo; // هر تودو یک گام از نوار پیشرفت بشه
     progress.style.width = `${step * completeTodos}%`; // اما اگر تودویی اضافه شده باشه عرض نوار پیشرفت بشه هر گاهی که داریم ضربدر موارد کامل شده
     containerCircle.textContent = `${completeTodos}  /  ${totalTodo}`;
@@ -176,25 +185,29 @@ else {
 }
 
 
+  function createConfetti() {
+    const colors = ['#f94144', '#f3722c', '#f9c74f', '#90be6d', '#577590'];
+    const confettiCount = 100;
+    for (let i = 0; i < confettiCount; i++) {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      confetti.style.width = confetti.style.height = (Math.random() * 7 + 5) + 'px';
+      confetti.style.animationDelay = (Math.random() * 2) + 's';
+      document.body.appendChild(confetti);
 
+      confetti.addEventListener('animationend', () => {
+        confetti.remove();
+      });
+    }
+  }
 
-// function updateProgressAndCircle() { 
-//   const totalTodo = todos.length;
-//   const completeTodos = todos.filter(t => t.isCompleted).length;
-
-//   if (totalTodo === 0) {
-//     progress.style.width = "0%";
-//     containerCircle.textContent = "0 از 0";
-//   } else {
-//     const step = 100 / totalTodo;
-//     progress.style.width = `${step * completeTodos}%`;
-//     containerCircle.textContent = `${completeTodos} از ${totalTodo}`;
-//   }
-// }
-
-
-
-
+/* فرض کنید این تابع وقتی همه تودولیست کامل شد فراخوانی می‌شود */
+  // function onAllTasksCompleted() {
+  //   createConfetti();
+  // }
 
 
 
