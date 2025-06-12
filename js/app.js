@@ -1,15 +1,18 @@
 //---------------------------------------------------------SELECTING:
+//add todo
 const todoForm = document.querySelector(".todo-form");
 const addItemInput = document.querySelector(".addItem__input");
 const taskList = document.querySelector(".container__task-list");
-
+//filter
 const selectFilter = document.querySelector(".select__filter");
-const progress =document.querySelector(".status__complete-progress");
+//status
+const progress = document.querySelector(".status__complete-progress");
+const containerCircle = document.querySelector(".container-circle");
 
 //-------------------------------------------------------------EVENT:
 todoForm.addEventListener("submit", addTodoTask);
 selectFilter.addEventListener("change", filterTodos);
-progress.addEventListener("change",completeTodo)
+progress.addEventListener("change", completeTodo);
 
 //-----------------------------------------------------------FUNCTION:
 let todos = [];
@@ -27,7 +30,8 @@ function addTodoTask(e) {
   };
   todos.push(newTodo);
   createTodo(todos);
-  // console.log(newTodo);
+   updateProgressAndCircle();
+ 
 }
 
 //create todos (slice of newTodo function for clean code):
@@ -81,6 +85,10 @@ function createTodo(todos) {
     btn.addEventListener("click", deleteTodo);
   });
 
+  //edit
+  // const todoEdit = [...document.querySelectorAll(".todo__edit")];
+  // todoEdit.forEach((editBtn) => {});
+
   const completedTod = [...document.querySelectorAll(".checkBox__complete")];
   completedTod.forEach((checkbox) => {
     checkbox.addEventListener("change", completeTodo);
@@ -117,6 +125,7 @@ function deleteTodo(e) {
     return t.id !== todoId;
   });
   createTodo(todos);
+   updateProgressAndCircle();
 }
 
 //complete:
@@ -126,6 +135,63 @@ function completeTodo(e) {
     return t.id === todoId;
   });
   findTodo.isCompleted = !findTodo.isCompleted;
-  console.log(todos);
   createTodo(todos);
+   updateProgressAndCircle();
 }
+
+//sort
+
+//update status(progressBar):
+//تابع به روز رسانی
+function updateProgressAndCircle() { 
+  const totalTodo = todos.length; // طول یا تعداد کل تودو هایی که دارم
+  const completeTodos = todos.filter((t) => t.isCompleted).length; // از بین همه تودوها فقط اونایی که تیک خوردن و کامل شدن
+
+  if (totalTodo === 0) {// اگر هیج تودویی اضافه نشده به لیست
+    progress.style.width = "0%"; // عرض نوار پیشرفت بشه صفر
+    containerCircle.textContent = "0 / 0";
+  } 
+  else {
+    const step = 100 / totalTodo; // هر تودو یک گام از نوار پیشرفت بشه
+    progress.style.width = `${step * completeTodos}%`; // اما اگر تودویی اضافه شده باشه عرض نوار پیشرفت بشه هر گاهی که داریم ضربدر موارد کامل شده
+    containerCircle.textContent = `${completeTodos}  /  ${totalTodo}`;
+  }
+ 
+}
+
+
+
+
+// function updateProgressAndCircle() { 
+//   const totalTodo = todos.length;
+//   const completeTodos = todos.filter(t => t.isCompleted).length;
+
+//   if (totalTodo === 0) {
+//     progress.style.width = "0%";
+//     containerCircle.textContent = "0 از 0";
+//   } else {
+//     const step = 100 / totalTodo;
+//     progress.style.width = `${step * completeTodos}%`;
+//     containerCircle.textContent = `${completeTodos} از ${totalTodo}`;
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

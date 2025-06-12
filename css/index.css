@@ -81,15 +81,17 @@ body {
 }
 .status__details .status__complete-progress {
   display: block;
-  width: 40%;
+  width: 0%;
   height: 10px;
   background-color: var(--teal);
   border-radius: var(--border-radius-lg);
   transition: all 0.3s ease;
 }
 
-.container__status .status__num {
-  background-color: var(--purpel);
+
+
+.container-circle{
+   background-color: var(--purpel);
   width: 110px;
   height: 110px;
   border-radius: 100%;
@@ -100,6 +102,14 @@ body {
   font-weight: 700;
   margin-top: 1.1rem;
 }
+/* .progress-circle{
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: blue;
+  margin: 0 5px;
+  display: inline-block;
+} */
 
 /* filter(all - completed - uncompleted) */
 .container__sortFilter {
