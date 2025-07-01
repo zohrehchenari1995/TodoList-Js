@@ -15,6 +15,22 @@
   </head>
   <body>
     <div class="container-main">
+
+      <div class="container__backdrop hidden"></div>
+      <div class="modal hidden">
+        <button class="modal__closeBtn"> X </button>
+        <div class="modal__title">EDIT</div>
+
+        <div class="modal__detail">
+        <input type="text">
+       <div class="modal__btn">
+         <button class="submit">submit</button>
+        <button class="reset">reset</button>
+       </div>
+        </div>
+
+      </div>
+
       <div class="container">
         <!--------------------------------------- STATUS & filter & sort -->
         <div class="container__status">
@@ -44,8 +60,8 @@
               <option class="selectes" selected> Sort</option>
               <option value="ascendingDate">Ascending Date</option>
               <option value="descendingDate">Decending Date</option>
-              <option value="ascendingTitle">Ascending title</option>
-              <option value="descendingTitle">Descending title</option>
+              <option value="ascendingTitle">Ascending A to Z</option>
+              <option value="descendingTitle">Descending Z to A</option>
             
 
             </select>
@@ -90,7 +106,7 @@
             </div>
 
             <div class="input__trashEdit">
-             <button class="todo__edit" data-todo-id=${todo-id}> <i class="fa-solid fa-pen-to-square"></i></button>
+             <button class="todo__edit" data-todo-id=${todo.id}> <i class="fa-solid fa-pen-to-square"></i></button>
              <button class="todo__remove" data-todo-id=${todo.id}> <i class="fa-solid fa-trash"></i></button>
             </div>
           </div>

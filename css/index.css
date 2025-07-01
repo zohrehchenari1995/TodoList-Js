@@ -88,8 +88,8 @@ body {
   transition: all 0.3s ease;
 }
 
-.container-circle{
-   background-color: var(--purpel);
+.container-circle {
+  background-color: var(--purpel);
   width: 110px;
   height: 110px;
   border-radius: 100%;
@@ -100,7 +100,6 @@ body {
   font-weight: 700;
   margin-top: 1.1rem;
 }
-
 
 /* filter(all - completed - uncompleted) */
 .container__sortFilter {
@@ -171,6 +170,7 @@ body {
 }
 /* end add item---------------------------------------------------------- */
 
+/*----------------------------------------------------------------- input */
 .container__input {
   background-color: var(--color-secondary-background);
   border: 1px solid var(--purpel);
@@ -188,13 +188,13 @@ body {
 }
 .input__checkbox {
   display: flex;
- 
 }
 .input__checkbox input[type="checkbox"] {
   width: 20px;
   height: 20px;
   border-radius: var(--border-radius-xs);
   margin-top: 0.5rem;
+  cursor: pointer;
 }
 .input__checkbox .input__text {
   margin-left: 2rem;
@@ -210,23 +210,20 @@ body {
   margin-right: 1.5rem;
 }
 
-.input__trashEdit {
-  cursor: pointer;
-}
 .input__trashEdit button {
   border: none;
   box-shadow: none;
   background-color: transparent !important;
   font-size: 25px;
-
 }
-
 .input__trashEdit .todo__remove {
   color: var(--color-trash);
   margin-left: 1rem;
+  cursor: pointer;
 }
 .input__trashEdit .todo__edit {
   color: var(--purpel);
+  cursor: pointer;
 }
 
 @media screen and (min-width: 600px) {
@@ -254,57 +251,117 @@ body {
 button > i {
   pointer-events: none;
 }
-.completed{
+.completed {
   text-decoration: line-through;
   opacity: 0.8;
   color: var(--teal);
 }
-.completeCheckBox{
+.completeCheckBox {
   appearance: none;
   background-color: var(--teal);
-  
 }
 
+/* -------------------------------------------------modal */
+.hidden {
+  display: none;
+}
 
+.container__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  backdrop-filter: blur(8px);
+  z-index: 10;
+}
+.modal {
+  background-color: var(--color-secondary-background);
+  width: calc(100vw - 10rem);
+  max-width: 60rem;
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  border-radius: var(--border-radius-2xl);
+  padding: 1rem;
+}
+.modal .modal__closeBtn{
+  padding: 1rem;
+  color: var(--purpel);
+  background-color: transparent;
+  border: none;
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+.modal .modal__title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 0.2rem;
+  color: var(--color-trash);
+}
+.modal__detail{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+.modal__detail input{
+  padding: 1.5rem 3rem;
+  border-radius: var(--border-radius-2xl);
+  outline: 0;
+  border: 1px solid var(--purpel);
+}
+.modal__detail .modal__btn{
+  margin-top: 4rem;
+  column-gap: 2rem;
+  display: flex;
+}
+.modal__detail .modal__btn button{
+  outline: 0;
+  padding: 0.5rem 1.5rem;
+  border-radius: var(--border-radius-2xl);
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  background-color: var(--purpel);
+  border: 1px solid var(--purpel);
+}
+.modal__btn .submit{
+  color: var(--teal);
+}
+.modal__btn .reset{
+  color: var(--color-trash);
+}
+/* end modal------------------------------------------- */
 
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  opacity: 0.9;
+  top: 0;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+}
 
-
-  .confetti {
-    position: fixed;
-    width: 10px;
-    height: 10px;
-    background-color: red;
-    opacity: 0.9;
-    top: 0;
-    animation-name: fall;
-    animation-timing-function: linear;
-    animation-iteration-count: 1;
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
   }
-
-  @keyframes fall {
-    0% {
-      transform: translateY(0) rotate(0deg);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(100vh) rotate(360deg);
-      opacity: 0;
-    }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}

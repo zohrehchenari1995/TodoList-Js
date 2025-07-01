@@ -23,6 +23,6 @@
   font-display: swap;
 }
 
-body{
+body,button{
   font-family: "open-sans";
 }
