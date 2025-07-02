@@ -282,7 +282,7 @@ button > i {
   width: calc(100vw - 10rem);
   max-width: 60rem;
   height: 300px;
-  position: absolute;
+  position: fixed;
   left: 50%;
   transform: translateX(-50%);
   z-index: 20;

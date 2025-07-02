@@ -1,3 +1,4 @@
+
 //---------------------------------------------------------SELECTING:
 //add todo
 const todoForm = document.querySelector(".todo-form");
@@ -12,7 +13,10 @@ const containerCircle = document.querySelector(".container-circle");
 
 //--------------------------------------------------------------EVENT:
 todoForm.addEventListener("submit", addTodoTask);
-selectFilter.addEventListener("change", filterTodos);
+selectFilter.addEventListener("change", (e)=>{
+  filterValue = e.target.value;
+  filterTodos();
+});
 progress.addEventListener("change", completeTodo);
 
 selectFilter.addEventListener("change", (e) => {
@@ -22,13 +26,10 @@ selectFilter.addEventListener("change", (e) => {
 });
 //END EVENT----------------------------------------------------------
 
-//--------------------------------------------------------------MODAL:
-
-//END MODAL----------------------------------------------------------
 //-----------------------------------------------------------FUNCTION:
 let todos = [];
-let currentFilter = "all"; // مقدار پیش‌فرض
-
+let currentFilter = "all"; // مقدار پیش‌ فرض
+let filterValue = "all";
 //add new todo:
 function addTodoTask(e) {
   e.preventDefault();
@@ -41,7 +42,7 @@ function addTodoTask(e) {
     isCompleted: false,
   };
   todos.push(newTodo);
-  createTodo(todos);
+  filterTodos();
   updateProgressAndCircle();
 }
 
@@ -97,23 +98,9 @@ function createTodo(todos) {
     btn.addEventListener("click", deleteTodo);
   });
 
-  //edit
+
+  //edit:
   const editTodos = [...document.querySelectorAll(".todo__edit")];
-
-  const backdrop = document.querySelector(".container__backdrop");
-  const modal = document.querySelector(".modal");
-  editTodos.forEach((t)=>{
-    t.addEventListener("click",showModal);
-  })
-
-  function showModal() {
-    backdrop.classList.remove("hidden");
-    modal.classList.remove("hidden");
-  }
-
-  // editTodos.forEach((edit) => {
-  //   edit.addEventListener("click", editTodo);
-  // });
 
   //checkBox(checkTodo)
   const completedTod = [...document.querySelectorAll(".checkBox__complete")];
@@ -123,9 +110,9 @@ function createTodo(todos) {
 }
 
 //filter todos:
-function filterTodos(e) {
-  const filter = e.target.value;
-  switch (filter) {
+function filterTodos() {
+  // const filter = e.target.value;
+  switch (filterValue) {
     case "all": {
       createTodo(todos);
       break;
@@ -141,7 +128,7 @@ function filterTodos(e) {
       break;
     }
     default:
-      createTodo(todos);
+      createTodo(totods);
   }
   updateProgressAndCircle();
 }
@@ -152,7 +139,7 @@ function deleteTodo(e) {
   todos = todos.filter((t) => {
     return t.id !== todoId;
   });
-  createTodo(todos);
+  filterTodos();
   updateProgressAndCircle();
 }
 
@@ -163,28 +150,30 @@ function completeTodo(e) {
     return t.id === todoId;
   });
   findTodo.isCompleted = !findTodo.isCompleted;
-  createTodo(todos);
+  filterTodos();
   updateProgressAndCircle();
   if (findTodo.isCompleted) {
     createConfetti();
   }
 }
 
-//sort:
 
-//edit:
-function editTodo(e) {
-  const todoId = Number(e.target.dataset.todoId);
-  const findEdit = todos.find((t) => {
-    return t.id === todoId;
-  });
-  console.log(findEdit);
-  const deleteValue = (findEdit.title.value = "");
-  console.log(deleteValue);
-  deleteValue.title = `${todos.title}`;
 
-  createTodo(todos);
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //update status(progressBar):
 //تابع به روز رسانی
@@ -240,3 +229,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+
+
