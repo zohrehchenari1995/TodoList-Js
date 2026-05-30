@@ -77,9 +77,7 @@ function createTodo(todos) {
             </div>
 
             <div class="input__trashEdit">
-              <button class="todo__edit" data-todo-id=${todo.id}>
-              <i class="fa-solid fa-pen-to-square edit"></i>
-              </button>
+           
              
               <button class="todo__remove" data-todo-id=${todo.id}>
                <i class="fa-solid fa-trash trash"></i>
@@ -158,23 +156,6 @@ function completeTodo(e) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //update status(progressBar):
 //تابع به روز رسانی
 function updateProgressAndCircle() {
@@ -231,4 +212,21 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
+
+// localstorage:
+function getAlltodos(){
+ const saveTodos = JSON.parse(localStorage.getItem("todos")) || [];
+ return saveTodos;
+}
+
+function saveTodos(todo){
+  const saveTodo = getAlltodos();
+  saveTodo.push(todo);
+  localStorage.setItem("todos",JSON.stringify(saveTodo));
+  return saveTodo;
+}
+function saveAllTodos(){
+  localStorage.setItem("todos",JSON.stringify(todos));
+}
 
