@@ -1,7 +1,7 @@
 
 ---
 
-# 🇬🇧 English README — Ready to Copy
+
 
 ```md
 # 📝 Todo List Project – Confetti Animation, Filters, and Progress Bar
